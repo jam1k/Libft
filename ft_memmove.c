@@ -6,7 +6,7 @@
 /*   By: jshestov <jshestov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 18:12:28 by jshestov          #+#    #+#             */
-/*   Updated: 2022/10/26 13:39:21 by jshestov         ###   ########.fr       */
+/*   Updated: 2022/11/02 09:43:57 by jshestov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,21 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 
 	cdest = (char *)dest;
 	csrc = (char *)src;
-	if ((csrc == NULL) || (cdest == NULL))
-		return (NULL);
-	if ((csrc < cdest) && (cdest < csrc + n))
+	if (!src && !dest)
+		return (0);
+	if (src == dest)
+		return (dest);
+	if (csrc < cdest)
 	{
-		cdest += n;
-		csrc += n;
-		while (n--)
+		while (n > 0)
 		{
-			*--cdest = *--csrc;
+			cdest[n - 1] = csrc[n - 1];
+			n--;
 		}
 	}
 	else
 	{
-		while (n--)
-			*cdest ++ = *csrc ++;
+		ft_memcpy(dest, src, n);
 	}
 	return (dest);
 }

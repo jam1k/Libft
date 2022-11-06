@@ -14,7 +14,8 @@
 
 int	ft_isalpha(int argument)
 {
-	if ((unsigned char) argument >= 'A' && (unsigned char) argument <= 'z')
+	if ((argument >= 65 && argument < 91)
+		|| (argument >= 97 && argument <= 122))
 		return (1);
 	else
 		return (0);

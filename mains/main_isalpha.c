@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   main_isalpha.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jshestov <jshestov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 13:43:47 by jshestov          #+#    #+#             */
-/*   Updated: 2022/11/02 10:25:45 by jshestov         ###   ########.fr       */
+/*   Created: 2022/10/26 09:35:03 by jshestov          #+#    #+#             */
+/*   Updated: 2022/11/02 09:34:48 by jshestov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <ctype.h>
+#include <stdio.h>
+#include "../libft.h"
 
-size_t	ft_strlcpy(char *restrict dst, const char *restrict src, size_t dstsize)
+int	ft_isalpha(int argument);
+
+int	main(void)
 {
-	size_t	i;
-	size_t	lensrc;
+	int	i;
 
-	lensrc = ft_strlen(src);
-	i = 0;
-	if (dstsize == 0)
-		return (lensrc);
-	while (i < dstsize - 1 && src[i] != '\0')
+	i = -1;
+	while (i < 530)
 	{
-		dst[i] = src[i];
+		if (!!ft_isalpha(i) != !!isalpha(i))
+			printf ("%d Fail\n", i);
+		else
+			printf ("%d Success\n", i);
 		i++;
 	}
-	dst[i] = '\0';
-	return (lensrc);
+	return (0);
 }

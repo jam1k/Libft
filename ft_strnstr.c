@@ -6,7 +6,7 @@
 /*   By: jshestov <jshestov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 10:01:13 by jshestov          #+#    #+#             */
-/*   Updated: 2022/10/28 10:25:46 by jshestov         ###   ########.fr       */
+/*   Updated: 2022/11/03 10:18:59 by jshestov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	while (i < len)
 	{
 		j = 0;
-		while (shaystack[i + j] != '\0' && shaystack[i + j] == needle[j])
+		while (shaystack[i + j] != '\0' && shaystack[i + j] == needle[j]
+			&& i + j < len)
 		{
 			if (needle[j + 1] == '\0')
 				return (&shaystack[i]);

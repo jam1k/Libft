@@ -14,7 +14,7 @@
 
 int	ft_isdigit(int argument)
 {
-	if ((unsigned char) argument >= '1' && (unsigned char) argument <= '9')
+	if (argument >= 48 && argument <= 57)
 		return (1);
 	else
 		return (0);

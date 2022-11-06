@@ -6,27 +6,36 @@
 /*   By: jshestov <jshestov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 18:12:58 by jshestov          #+#    #+#             */
-/*   Updated: 2022/10/28 09:41:38 by jshestov         ###   ########.fr       */
+/*   Updated: 2022/11/03 09:54:26 by jshestov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
 size_t	ft_strlcat(char *restrict dst, const char *restrict src, size_t dstsize)
 {
-	size_t	i;
-	size_t	lendst;
+	size_t			i;
+	size_t			j;
+	size_t			lendst;
+	size_t			lensrc;
+	unsigned char	*source;
 
-	lendst = ft_strlen(dst);
-	i = 0;
-	if ((lendst) < (dstsize - 1))
+	lensrc = ft_strlen((char *)src);
+	if (dstsize == 0)
+		return (lensrc);
+	lendst = ft_strlen((char *)dst);
+	i = lendst;
+	j = 0;
+	source = (unsigned char *)src;
+	while (source[j] != '\0' && i < dstsize - 1)
 	{
-		while (src[i] != '\0' && i < (dstsize - 1 - lendst))
-		{
-			dst[lendst + i] = src[i];
-			i++;
-		}
-		dst[lendst + i] = '\0';
+		dst[i] = source[j];
+		i++;
+		j++;
 	}
-	return (lendst + ft_strlen(src));
+	dst[i] = '\0';
+	if (lendst == 0)
+		return (lensrc);
+    if (dstsize > lendst)
+        return (lendst + lensrc);
+	return (lensrc + dstsize);
 }

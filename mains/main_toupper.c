@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   main_toupper.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jshestov <jshestov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/26 13:43:47 by jshestov          #+#    #+#             */
-/*   Updated: 2022/11/02 10:25:45 by jshestov         ###   ########.fr       */
+/*   Created: 2022/10/26 09:35:03 by jshestov          #+#    #+#             */
+/*   Updated: 2022/10/26 15:08:24 by jshestov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <ctype.h>
+#include <stdio.h>
+#include "../libft.h"
 
-size_t	ft_strlcpy(char *restrict dst, const char *restrict src, size_t dstsize)
+int	main(void)
 {
-	size_t	i;
-	size_t	lensrc;
+	char	c;
 
-	lensrc = ft_strlen(src);
-	i = 0;
-	if (dstsize == 0)
-		return (lensrc);
-	while (i < dstsize - 1 && src[i] != '\0')
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (lensrc);
+	c = '!';
+	printf("mine = %d\n", ft_toupper(c));
+	printf("their = %d\n", toupper(c));
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jshestov <jshestov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 15:10:19 by jshestov          #+#    #+#             */
-/*   Updated: 2022/10/27 09:59:35 by jshestov         ###   ########.fr       */
+/*   Updated: 2022/11/02 09:29:00 by jshestov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,16 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	while (*s != '\0')
+	char	*str;
+	int		i;
+
+	str = (char *)s;
+	i = 0;
+	while (str[i] != (char)c)
 	{
-		if (*s == (char) c)
-			return ((char *)s);
-		s++;
+		if (str[i] == '\0')
+			return (0);
+		i++;
 	}
-	return (NULL);
+	return (&str[i]);
 }

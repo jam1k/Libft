@@ -6,17 +6,25 @@
 /*   By: jshestov <jshestov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:50:43 by jshestov          #+#    #+#             */
-/*   Updated: 2022/10/24 18:24:57 by jshestov         ###   ########.fr       */
+/*   Updated: 2022/11/04 15:06:03 by jshestov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(char *str)
+static int	check_overflow(int sign)
 {
-	int	sum;
-	int	sign;
-	int	index;
+	if (sign == 1)
+		return (-1);
+	else
+		return (0);
+}
+
+int	ft_atoi(const char *str)
+{
+	long long int	sum;
+	int				sign;
+	int				index;
 
 	sum = 0;
 	sign = 1;
@@ -31,7 +39,12 @@ int	ft_atoi(char *str)
 	while (str[index] >= '0' && str[index] <= '9')
 	{
 		sum = sum * 10 + str[index] - '0';
+		if (sum == -8446744073709551617)
+		{
+			sum = check_overflow(sign);
+			return ((int)sum);
+		}
 		index++;
 	}
-	return (sum * sign);
+	return ((int)sum * sign);
 }

@@ -6,7 +6,7 @@
 /*   By: jshestov <jshestov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 09:17:37 by jshestov          #+#    #+#             */
-/*   Updated: 2022/10/31 13:40:39 by jshestov         ###   ########.fr       */
+/*   Updated: 2022/11/04 13:38:03 by jshestov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,7 @@ static char	*word_copy(char const *s, int start, int end)
 	i = 0;
 	word = (char *) malloc(sizeof(char) * (end - start + 1));
 	if (!word)
-	{
-		free(word);
 		return (NULL);
-	}
 	while (start < end)
 	{
 		word[i] = s[start];
@@ -64,26 +61,26 @@ static char	*word_copy(char const *s, int start, int end)
 	return (word);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char const *str, char c)
 {
 	int		i;
 	int		j;
 	char	**res;
 	int		index;
 
-	res = (char **)malloc((ft_nb_words(s, c) + 1) * sizeof(char *));
-	if (!s || !res)
+	if (str == 0 || !(res = (char **)malloc((ft_nb_words(str, c) + 1) * sizeof(char *))))
 		return (NULL);
 	i = 0;
 	j = 0;
 	index = -1;
-	while (i < (int)ft_strlen(s))
+	while (i <= (int)ft_strlen(ft_strtrim(str, &c)))
 	{
-		if (s[i] != c && index < 0)
+		if (ft_strtrim(str, &c)[i] != c && index < 0)
 			index = i;
-		else if ((s[i] == c || i == (int)ft_strlen(s)) && index >= 0)
+		else if ((ft_strtrim(str, &c)[i] == c && index >= 0)
+			|| (ft_strtrim(str, &c)[i] == '\0' && index >= 0))
 		{
-			res[j++] = word_copy(s, index, i);
+			res[j++] = word_copy(ft_strtrim(str, &c), index, i);
 			index = -1;
 		}
 		i++;

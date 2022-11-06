@@ -19,11 +19,11 @@ char	*ft_strrchr(const char *s, int c)
 
 	string = (char *)s;
 	index = ft_strlen(string);
-	while (index - 1 > 0)
+	while (index >= 0)
 	{
-		if (string[index - 1] == c)
-			return (&string[index - 1]);
+		if (string[index] == c)
+			return (&string[index]);
 		index--;
 	}
-	return (NULL);
+	return (0);
 }
