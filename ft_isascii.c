@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 int	ft_isascii(int argument)
 {
 	if ((int) argument >= 0 && (int) argument <= 127)

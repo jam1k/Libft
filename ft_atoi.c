@@ -39,7 +39,7 @@ int	ft_atoi(const char *str)
 	while (str[index] >= '0' && str[index] <= '9')
 	{
 		sum = sum * 10 + str[index] - '0';
-		if (sum == -8446744073709551617)
+		if (sum < 0)
 		{
 			sum = check_overflow(sign);
 			return ((int)sum);

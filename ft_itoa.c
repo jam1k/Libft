@@ -10,9 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdlib.h>
-
 static int	return_length_int(int n)
 {
 	int	count;
@@ -51,7 +48,7 @@ char	*ft_itoa(int nb)
 	i = return_length_int(n);
 	res = (char *)malloc(sizeof(char) * (return_length_int(n) + 1));
 	if (!res)
-		return (NULL);
+		return (0);
 	res[i] = '\0';
 	i--;
 	if (n == 0)

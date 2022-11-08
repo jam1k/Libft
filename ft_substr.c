@@ -29,7 +29,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (start >= str_len)
 		return (ft_strdup(""));
 	if (len > str_len)
-		return (NULL);
+		return (s);
 	while (i < len)
 	{
 		result[i] = (char)s[start + i];

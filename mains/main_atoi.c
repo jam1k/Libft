@@ -66,7 +66,7 @@ int atoi_test(void)
     {
         printf("\nERROR: ft_atoi('+-2') != atoi('+-2')\n%d\n", ft_atoi("+-2"));
     }
-    if (ft_atoi("-+2") == atoi("-+2"))
+    if (ft_atoi("99999999999999999999999999999999999") == atoi("99999999999999999999999999999999999"))
         tests_passed++;
     else
     {
@@ -91,5 +91,6 @@ int	main(void)
 	int	res;
 
 	res = atoi_test();
+    printf("res = %d", res);
 	return (0);
 }

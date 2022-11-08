@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 int	ft_isprint(int argument)
 {
 	if ((int) argument >= 32 && (int) argument <= 126)
