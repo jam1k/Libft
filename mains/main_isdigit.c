@@ -21,6 +21,13 @@ int	main(void)
 	int	i;
 
 	i = -1;
-	printf("%d\n", isdigit(48));
+	while (i < 530)
+	{
+		if (!!ft_isalpha(i) != !!isalpha(i))
+			printf ("%d Fail\n", i);
+		else
+			printf ("%d Success\n", i);
+		i++;
+	}
 	return (0);
 }

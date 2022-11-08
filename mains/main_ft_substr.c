@@ -33,8 +33,8 @@ int     strsub_test(void)
         printf("\nERROR: strcmp(str, 'g') != 0\n%s)", str);
 
     free(str);
-    str = ft_substr("grab the substring", 1, 0);
-    if (strcmp(str, "") == 0)
+    str = ft_substr("test", 1, 6);
+    if (strcmp(str, "test") == 0)
         tests_passed++;
     else
         printf("\nERROR: strcmp(str, '') != 0\n%s)", str);
