@@ -51,7 +51,22 @@ int    strnstr_test(void)
     else
         printf("ERROR: p1 != p2 (after null)");
 
-    if (tests_passed == 4)
+    str = "lorem ipsum dolor sit amet";
+    p1 = ft_strnstr(str, "ipsumm", 30);
+    p2 = strnstr(str, "ipsumm", 30);
+    if (p1 == p2)
+		tests_passed++;
+	else
+		printf("ERROR: p1 != p2 (war machine case)");
+    
+    str = "lorem ipsum dolor sit amet";
+    p1 = ft_strnstr(str, "consectetur", 30);
+    p2 = strnstr(str, "consectetur", 30);
+    if (p1 == p2)
+        tests_passed++;
+	else
+		printf("ERROR: p1 != p2 (war machine case)");
+    if (tests_passed == 6)
 	{
 		printf("\tOK\n");
         return (1);
