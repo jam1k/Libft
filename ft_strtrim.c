@@ -56,7 +56,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		i;
 	char	*result;
 
-	if (!s1 || !set)
+	if (!s1)
 		return (NULL);
 	start = return_start(s1, set);
 	end = return_end(s1, set);
