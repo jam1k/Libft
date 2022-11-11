@@ -6,11 +6,9 @@
 /*   By: jshestov <jshestov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 11:50:43 by jshestov          #+#    #+#             */
-/*   Updated: 2022/11/04 15:06:03 by jshestov         ###   ########.fr       */
+/*   Updated: 2022/11/09 09:22:17 by jshestov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 static int	check_overflow(int sign)
 {

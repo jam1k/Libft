@@ -6,7 +6,7 @@
 /*   By: jshestov <jshestov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 09:46:49 by jshestov          #+#    #+#             */
-/*   Updated: 2022/11/04 13:57:07 by jshestov         ###   ########.fr       */
+/*   Updated: 2022/11/10 09:24:42 by jshestov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (NULL);
 	start = return_start(s1, set);
 	end = return_end(s1, set);
-	if (end <= start)
+	if (end < start)
 		return (ft_strdup(""));
 	result = (char *) malloc(sizeof(char) * (end - start + 1 + 1));
 	if (!result)

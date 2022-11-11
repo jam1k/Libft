@@ -6,85 +6,73 @@
 /*   By: jshestov <jshestov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 09:17:37 by jshestov          #+#    #+#             */
-/*   Updated: 2022/11/04 13:38:03 by jshestov         ###   ########.fr       */
+/*   Updated: 2022/11/10 09:04:00 by jshestov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static int	ft_nb_words(char const *s, char c)
-{
-	int	count;
-	int	i;
-	int	old_i;
+#include "libft.h"
 
-	count = 0;
+static int	count_words(const char *str, char c)
+{
+	int	i;
+	int	trigger;
+
 	i = 0;
-	while (i < (int)ft_strlen(s))
+	trigger = 0;
+	while (*str)
 	{
-		while (i < (int)ft_strlen(s))
+		if (*str != c && trigger == 0)
 		{
-			if (ft_strchr(&c, s[i]) == NULL)
-				break ;
+			trigger = 1;
 			i++;
 		}
-		old_i = i;
-		while (i < (int)ft_strlen(s))
-		{
-			if (ft_strchr(&c, s[i]) != NULL)
-				break ;
-			i++;
-		}
-		if (i > old_i)
-			count = count + 1;
+		else if (*str == c)
+			trigger = 0;
+		str++;
 	}
-	return (count);
+	return (i);
 }
 
-static char	*word_copy(char const *s, int start, int end)
+static char	*word_dup(const char *str, int start, int finish)
 {
 	char	*word;
 	int		i;
 
 	i = 0;
-	word = (char *) malloc(sizeof(char) * (end - start + 1));
-	if (!word)
-		return (NULL);
-	while (start < end)
-	{
-		word[i] = s[start];
-		i++;
-		start++;
-	}
+	word = malloc((finish - start + 1) * sizeof(char));
+	while (start < finish)
+		word[i++] = str[start++];
 	word[i] = '\0';
 	return (word);
 }
 
-char	**ft_split(char const *str, char c)
+char	**ft_split(char const *s, char c)
 {
-	int		i;
-	int		j;
-	char	**res;
+	size_t	i;
+	size_t	j;
 	int		index;
+	char	**split;
 
-	if (str == 0 || !(res = (char **)malloc((ft_nb_words(str, c) + 1) * sizeof(char *))))
-		return (NULL);
+	split = malloc((count_words(s, c) + 1) * sizeof(char *));
+	if (!split)
+		return (0);
 	i = 0;
 	j = 0;
 	index = -1;
-	while (i <= (int)ft_strlen(ft_strtrim(str, &c)))
+	while (i <= ft_strlen(s))
 	{
-		if (ft_strtrim(str, &c)[i] != c && index < 0)
+		if (s[i] != c && index < 0)
 			index = i;
-		else if ((ft_strtrim(str, &c)[i] == c && index >= 0)
-			|| (ft_strtrim(str, &c)[i] == '\0' && index >= 0))
+		else if ((s[i] == c || i == ft_strlen(s)) && index >= 0)
 		{
-			res[j++] = word_copy(ft_strtrim(str, &c), index, i);
+			split[j++] = word_dup(s, index, i);
 			index = -1;
 		}
 		i++;
 	}
-	res[j] = 0;
-	return (res);
+	split[j] = 0;
+	return (split);
 }

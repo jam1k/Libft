@@ -6,7 +6,7 @@
 /*   By: jshestov <jshestov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 10:01:13 by jshestov          #+#    #+#             */
-/*   Updated: 2022/11/03 10:18:59 by jshestov         ###   ########.fr       */
+/*   Updated: 2022/11/09 10:15:39 by jshestov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,13 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	size_t	j;
 	char	*shaystack;
 
-	if (!needle && !haystack)
-		return (0);
-	if (len == 0)
-		return (0);
-	
 	i = 0;
 	shaystack = (char *)haystack;
-	if (needle[0] == '\0')
+	if (ft_strlen(needle) == 0)
 		return (shaystack);
-	
-	if (len > ft_strlen(haystack))
+	else if (len == 0)
+		return (0);
+	else if (len > ft_strlen(haystack))
 		len = ft_strlen(haystack);
 	while (i < len)
 	{
@@ -42,5 +38,5 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		}
 		i++;
 	}
-	return (NULL);
+	return (0);
 }

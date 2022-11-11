@@ -6,7 +6,7 @@
 /*   By: jshestov <jshestov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:12:44 by jshestov          #+#    #+#             */
-/*   Updated: 2022/11/03 13:49:50 by jshestov         ###   ########.fr       */
+/*   Updated: 2022/11/10 09:07:53 by jshestov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,29 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*result;
 	size_t	i;
-	size_t	str_len;
+	size_t	j;
+	char	*str;
 
-	if (!s)
-		return (NULL);
-	result = (char *)malloc((len + 1) * sizeof(char));
-	if (!result)
+	if (start >= ft_strlen(s))
+		return (ft_strdup(""));
+	if (len > ft_strlen(s))
+		str = (char *)malloc(sizeof(char) * (ft_strlen(s) - start + 1));
+	else
+		str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
 		return (NULL);
 	i = 0;
-	str_len = ft_strlen((char *)s);
-	if (start >= str_len)
-		return (ft_strdup(""));
-	if (len > str_len)
-		return (ft_strdup(s));
-	while (i < len)
+	j = 0;
+	while (s[i])
 	{
-		result[i] = (char)s[start + i];
+		if (i >= start && j < len)
+		{
+			str[j] = s[i];
+			j++;
+		}
 		i++;
 	}
-	result[i] = '\0';
-	return (result);
+	str[j] = '\0';
+	return (str);
 }

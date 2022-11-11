@@ -6,7 +6,7 @@
 /*   By: jshestov <jshestov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 15:54:50 by jshestov          #+#    #+#             */
-/*   Updated: 2022/10/27 09:54:25 by jshestov         ###   ########.fr       */
+/*   Updated: 2022/11/09 14:41:03 by jshestov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strrchr(const char *s, int c)
 	index = ft_strlen(string);
 	while (index >= 0)
 	{
-		if (string[index] == c)
+		if (string[index] == (unsigned char)c)
 			return (&string[index]);
 		index--;
 	}

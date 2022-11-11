@@ -6,7 +6,7 @@
 /*   By: jshestov <jshestov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 16:02:21 by jshestov          #+#    #+#             */
-/*   Updated: 2022/11/04 10:50:39 by jshestov         ###   ########.fr       */
+/*   Updated: 2022/11/09 13:45:29 by jshestov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	int		i;
 	char	*tmp;
 
-	if (!s || !f)
+	if (!s)
 		return (NULL);
 	tmp = (char *) malloc (sizeof(char) * (ft_strlen((char *)s) + 1));
 	if (!tmp)
